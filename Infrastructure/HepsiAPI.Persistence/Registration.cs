@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-//using HepsiAPI.Application.Interfaces.Repositories;
+using HepsiAPI.Application.Interfaces.Repositories;
 //using HepsiAPI.Application.Interfaces.UnitOfWorks;
 using HepsiAPI.Domain.Entities;
 using HepsiAPI.Persistence.Context;
-//using HepsiAPI.Persistence.Repositories;
+using HepsiAPI.Persistence.Repositories;
 //using HepsiAPI.Persistence.UnitOfWorks;
 
-namespace YoutubeApi.Persistence
+namespace HepsiAPI.Persistence
 {
     public static class Registration
     {
@@ -18,7 +18,7 @@ namespace YoutubeApi.Persistence
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 
-            //services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             //services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
