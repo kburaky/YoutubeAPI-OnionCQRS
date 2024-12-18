@@ -2,10 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using HepsiAPI.Domain.Entities;
+using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HepsiAPI.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, Role, Guid>
     {
         public AppDbContext() { }
 
@@ -17,12 +19,16 @@ namespace HepsiAPI.Persistence.Context
         public DbSet<Detail> Details { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        //public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());//Fake Bs den gelen verileride kaydetmek için
         }
+
+        
+
+
     }
 }

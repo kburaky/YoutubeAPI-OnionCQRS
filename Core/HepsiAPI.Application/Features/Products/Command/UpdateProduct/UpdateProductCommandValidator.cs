@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace YoutubeApi.Application.Features.Products.Command.UpdateProduct
+namespace HepsiAPI.Application.Features.Products.Command.UpdateProduct
 {
     public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommandRequest>
     {

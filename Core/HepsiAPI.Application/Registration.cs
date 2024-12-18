@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
-//using HepsiAPI.Application.Exceptions;
+using HepsiAPI.Application.Exceptions;
 using System.Globalization;
 using MediatR;
-//using HepsiAPI.Application.Beheviors;
-//using HepsiAPI.Application.Features.Products.Rules;
-//using HepsiAPI.Application.Bases;
+using HepsiAPI.Application.Beheviors;
+using HepsiAPI.Application.Features.Products.Rules;
+using HepsiAPI.Application.Bases;
 
 namespace HepsiAPI.Application
 {
@@ -16,16 +16,16 @@ namespace HepsiAPI.Application
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            //services.AddTransient<ExceptionMiddleware>();
+            services.AddTransient<ExceptionMiddleware>();
 
-            //services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
+            services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
-            //services.AddValidatorsFromAssembly(assembly);
-            //ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
+            services.AddValidatorsFromAssembly(assembly);
+            ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
 
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
 
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
 
@@ -42,5 +42,7 @@ namespace HepsiAPI.Application
 
             return services;    
         }
+
+
     }
 }

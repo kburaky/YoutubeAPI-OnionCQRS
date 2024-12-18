@@ -27,9 +27,12 @@ namespace HepsiAPI.Application.Features.Products.Command.CreateProduct
 
             await productRules.ProductTitleMustNotBeSame(products, request.Title);
 
+
+
             Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
 
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
+
             if (await unitOfWork.SaveAsync() > 0)
             {
                 foreach (var categoryId in request.CategoryIds)

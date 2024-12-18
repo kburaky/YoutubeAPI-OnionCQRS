@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using YoutubeApi.Application.Bases;
-using YoutubeApi.Application.Interfaces.AutoMapper;
-using YoutubeApi.Application.Interfaces.UnitOfWorks;
-using YoutubeApi.Domain.Entities;
+using HepsiAPI.Application.Bases;
+using HepsiAPI.Application.Interfaces.AutoMapper;
+using HepsiAPI.Application.Interfaces.UnitOfWorks;
+using HepsiAPI.Domain.Entities;
 
-namespace YoutubeApi.Application.Features.Products.Command.DeleteProduct
+
+namespace HepsiAPI.Application.Features.Products.Command.DeleteProduct
 {
     public class DeleteProductCommandHandler : BaseHandler, IRequestHandler<DeleteProductCommandRequest, Unit>
     {
