@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace YoutubeApi.Application.Features.Products.Command.DeleteProduct
+namespace HepsiAPI.Application.Features.Products.Command.DeleteProduct
 {
     public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommandRequest>
     {

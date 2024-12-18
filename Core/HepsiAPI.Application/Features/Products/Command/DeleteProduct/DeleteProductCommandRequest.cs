@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YoutubeApi.Application.Features.Products.Command.DeleteProduct
+namespace HepsiAPI.Application.Features.Products.Command.DeleteProduct
 {
     public class DeleteProductCommandRequest : IRequest<Unit>
     {

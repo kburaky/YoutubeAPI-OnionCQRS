@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using YoutubeApi.Application.Bases;
-using YoutubeApi.Application.Interfaces.AutoMapper;
-using YoutubeApi.Application.Interfaces.UnitOfWorks;
-using YoutubeApi.Domain.Entities;
+using HepsiAPI.Application.Bases;
+using HepsiAPI.Application.Interfaces.AutoMapper;
+using HepsiAPI.Application.Interfaces.UnitOfWorks;
+using HepsiAPI.Domain.Entities;
 
-namespace YoutubeApi.Application.Features.Products.Command.UpdateProduct
+namespace HepsiAPI.Application.Features.Products.Command.UpdateProduct
 {
     public class UpdateProductCommandHandler : BaseHandler, IRequestHandler<UpdateProductCommandRequest, Unit>
     {
@@ -28,6 +28,7 @@ namespace YoutubeApi.Application.Features.Products.Command.UpdateProduct
             foreach (var categoryId in request.CategoryIds)
                 await unitOfWork.GetWriteRepository<ProductCategory>()
                     .AddAsync(new() { CategoryId = categoryId, ProductId = product.Id });
+             
 
             await unitOfWork.GetWriteRepository<Product>().UpdateAsync(map);
             await unitOfWork.SaveAsync();

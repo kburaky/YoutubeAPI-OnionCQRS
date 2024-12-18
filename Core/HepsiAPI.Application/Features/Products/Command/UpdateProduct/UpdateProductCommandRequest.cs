@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace YoutubeApi.Application.Features.Products.Command.UpdateProduct
+namespace HepsiAPI.Application.Features.Products.Command.UpdateProduct
 {
     public class UpdateProductCommandRequest : IRequest<Unit>
     {
