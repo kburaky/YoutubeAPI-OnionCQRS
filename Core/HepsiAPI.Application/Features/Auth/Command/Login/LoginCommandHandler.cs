@@ -38,7 +38,9 @@ namespace HepsiAPI.Application.Features.Auth.Command.Login
 
             await authRules.EmailOrPasswordShouldNotBeInvalid(user, checkPassword);
 
+
             IList<string> roles = await userManager.GetRolesAsync(user);
+
 
             JwtSecurityToken token = await tokenService.CreateToken(user, roles);
             string refreshToken = tokenService.GenerateRefreshToken();
@@ -63,5 +65,7 @@ namespace HepsiAPI.Application.Features.Auth.Command.Login
             };
 
         }
+
+
     }
 }
