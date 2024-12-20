@@ -29,10 +29,12 @@ namespace HepsiAPI.Application.Features.Auth.Command.RefreshToken
             ClaimsPrincipal? principal = tokenService.GetPrincipalFromExpiredToken(request.AccessToken);
             string email = principal.FindFirstValue(ClaimTypes.Email);
 
+
             User? user = await userManager.FindByEmailAsync(email);
             IList<string> roles = await userManager.GetRolesAsync(user);
 
             await authRules.RefreshTokenShouldNotBeExpired(user.RefreshTokenExpiryTime);
+
 
             JwtSecurityToken newAccessToken = await tokenService.CreateToken(user, roles);
             string newRefreshToken = tokenService.GenerateRefreshToken();
@@ -45,6 +47,10 @@ namespace HepsiAPI.Application.Features.Auth.Command.RefreshToken
                 AccessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
                 RefreshToken = newRefreshToken,
             };
+
+
         }
+
+
     }
 }

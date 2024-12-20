@@ -3,9 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-//using HepsiAPI.Application.Interfaces.RedisCache;
+using HepsiAPI.Application.Interfaces.RedisCache;
 using HepsiAPI.Application.Interfaces.Tokens;
-//using HepsiAPI.Infrastructure.RedisCache;
+using HepsiAPI.Infrastructure.RedisCache;
 using HepsiAPI.Infrastructure.Tokens;
 
 namespace HepsiAPI.Infrastructure
@@ -17,8 +17,8 @@ namespace HepsiAPI.Infrastructure
             services.Configure<TokenSettings>(configuration.GetSection("JWT"));
             services.AddTransient<ITokenService, TokenService>();
 
-            //services.Configure<RedisCacheSettings>(configuration.GetSection("RedisCacheSettings"));
-            //services.AddTransient<IRedisCacheService, RedisCacheService>();
+            services.Configure<RedisCacheSettings>(configuration.GetSection("RedisCacheSettings"));
+            services.AddTransient<IRedisCacheService, RedisCacheService>();
 
             services.AddAuthentication(opt =>
             {
@@ -40,11 +40,11 @@ namespace HepsiAPI.Infrastructure
                 };
             });
 
-            //services.AddStackExchangeRedisCache(opt =>
-            //{
-            //    opt.Configuration = configuration["RedisCacheSettings:ConnectionString"];
-            //    opt.InstanceName = configuration["RedisCacheSettings:InstanceName"];
-            //});
+            services.AddStackExchangeRedisCache(opt =>
+            {
+                opt.Configuration = configuration["RedisCacheSettings:ConnectionString"];
+                opt.InstanceName = configuration["RedisCacheSettings:InstanceName"];
+            });
         }
     }
 }
